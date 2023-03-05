@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>二分算法</title>
+      <link href="/2023/03/05/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/"/>
+      <url>/2023/03/05/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<p>##二分算法</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//Binary search</span><br><span class="line"></span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int Binary_search(int l,int r,int x)</span><br><span class="line">&#123;</span><br><span class="line">    int mid = (l+r)/2;</span><br><span class="line">    while(l&lt;r)</span><br><span class="line">    &#123;</span><br><span class="line">        if(x&lt;=q[mid]) r = mid;</span><br><span class="line">        else l = mid+1;</span><br><span class="line">    &#125;</span><br><span class="line">    return l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法基础学习记录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>归并排序</title>
       <link href="/2023/03/05/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/"/>
       <url>/2023/03/05/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
