@@ -25,6 +25,12 @@
       
       
       
+        <tags>
+            
+            <tag> 电路分析基础 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -120,12 +126,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> CS learning </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -147,7 +147,7 @@
       
         <tags>
             
-            <tag> 贪心算法 </tag>
+            <tag> Data Structure </tag>
             
         </tags>
       
@@ -172,7 +172,7 @@
       
         <tags>
             
-            <tag> 动态规划DP </tag>
+            <tag> Data Structure </tag>
             
         </tags>
       
@@ -197,7 +197,7 @@
       
         <tags>
             
-            <tag> 图论 </tag>
+            <tag> Data Structure </tag>
             
         </tags>
       
@@ -222,7 +222,7 @@
       
         <tags>
             
-            <tag> 数据结构 </tag>
+            <tag> Data Structure </tag>
             
         </tags>
       
@@ -247,7 +247,7 @@
       
         <tags>
             
-            <tag> 基础算法 </tag>
+            <tag> Data Structure </tag>
             
         </tags>
       
