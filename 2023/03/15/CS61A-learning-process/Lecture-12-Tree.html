@@ -1,0 +1,77 @@
+<hr>
+<p>title: Lecture 12 Tree<br>date: 2023-03-21 15:09:25<br>tags: CS61a</p>
+<h2 id="categories-CS61a"><a href="#categories-CS61a" class="headerlink" title="categories: CS61a"></a>categories: CS61a</h2><p>Tree:</p>
+<pre><code class="lang-python">#构造一棵树
+def tree(label,branches = []):
+    for branch in branches:
+        assert is_tree(branch) &#39;branches must be trees&#39;
+    return [label] + list(branches)
+
+def label(tree):
+    return tree[0]
+
+def branches(tree):
+    return tree[1:]
+
+def is_leaf(tree):
+    return not branches(tree)
+
+#验证一个data abstraction是Tree
+def is_tree(tree):
+    if type(tree) != list or len(tree) &lt; 1:
+        return False
+    for branch in branches(tree):
+        if not is_tree(branch):  # 递归判断
+            return False
+    return True
+</code></pre>
+<p>Tree Processing:</p>
+<pre><code class="lang-python">def fib_tree(n):
+    if n &lt;= 1:
+        return tree(n)
+    else:
+        left,right = fib_tree(n-2),fib_tree(n-1)
+        return tree(label(left) + label(right) ,[left , right])
+</code></pre>
+<p>Tree recursion:</p>
+<pre><code class="lang-python">def count_leaf(tree):
+    if is_leaf(tree):
+        return 1
+    else:
+        branch_counts = [count_leaf(b) for b in branches(tree)]
+        return sum(branch_counts)
+
+def leaves(tree):
+    if is_leaf(tree):
+        reurn [label(tree)]
+    else:
+        return sum(leaves(b) for b in branches(tree),[])
+</code></pre>
+<p>用tree构造新的tree</p>
+<pre><code class="lang-python">#只把叶节点加一
+def increment_leaves(t):
+    if is_leaf(t):
+        return tree(label(t) + 1)
+    else:
+        bs = [increment_leaves(b) for b in branches(t)]
+        return tree(label(t),bs)
+
+#把所有节点都加一
+def increment(t):
+    return tree(label(t) + 1,[increment(b) for b in branches(t)])
+</code></pre>
+<p>打印一个树</p>
+<pre><code class="lang-python">def print_tree(tree,index = 0):
+    print(&#39; &#39; * index + str(label(tree)))
+    for b in branches(t):
+        print_tree(b,index + 1)
+</code></pre>
+<p>打印一个树从根节点到叶结点的距离</p>
+<pre><code class="lang-python">def print_sum(tree,so_far):
+    so_far = so_far + label(tree)
+    if is_leaf(tree):
+        print(so_far)
+    else:
+           for b in branches(tree):
+            print_sum(b,so_far)
+</code></pre>

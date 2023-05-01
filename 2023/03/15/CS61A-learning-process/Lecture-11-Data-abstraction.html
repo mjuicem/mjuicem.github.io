@@ -1,0 +1,45 @@
+<hr>
+<p>title: lecture 11 Data abstraction<br>date: 2023-03-21 15:40:41<br>tags: CS61a</p>
+<h2 id="categories-CS61a"><a href="#categories-CS61a" class="headerlink" title="categories: CS61a"></a>categories: CS61a</h2><p>Data abstraction ——&gt; 数据抽象</p>
+<blockquote>
+<p>数据抽象的特征类似于函数抽象。当我们创建函数抽象时，函数如何实现的细节被隐藏了，而且特定的函数本身可以被任何具有相同行为的函数替换。换句话说，我们可以构造抽象来使函数的使用方式和函数的实现细节分离。与之相似，数据抽象是一种方法论，使我们将复合数据对象的使用细节与它的构造方式隔离。</p>
+<p>数据抽象的基本概念是构造操作抽象数据的程序。也就是说，我们的程序应该以一种方式来使用数据，对数据做出尽可能少的假设。同时，需要定义具体的数据表示，独立于使用数据的程序。我们系统中这两部分的接口是一系列函数，叫做选择器和构造器，它们基于具体表示实现了抽象数据。为了演示这个技巧，我们需要考虑如何设计一系列函数来操作有理数。</p>
+</blockquote>
+<p>构建数据抽象的步骤:</p>
+<ul>
+<li>假设数据的存在，然后构造操作这些数据的程序</li>
+<li>在独立与操作数据的程序之外，构造数据具体的表示方式</li>
+</ul>
+<pre><code class="lang-python">#有理数的操作
+
+def add_ration(x,y):
+    nx,dx = ration_first(x),ration_second(x)
+    ny,dy = ration_first(y),ration_second(y)
+    return make_ration(nx*dy + ny*dx,dx * dy)
+
+def mul_ration(x,y):
+    nx,dx = ration_first(x),ration_second(x)
+    ny,dy = ration_first(y),ration_second(y)
+    return make_ration(nx*ny,dx*dy)
+
+def eq_ration(x,y):
+    return ration_first(x) *ration_second(y) == ration_first(y) * ration_second(x)
+
+def str_rat(x):
+        &quot;&quot;&quot;Return a string &#39;n/d&#39; for numerator n and denominator d.&quot;&quot;&quot;
+        return &#39;{0}/{1}&#39;.format(numer(x), denom(x))
+
+#数据的具体表示
+
+#构造器
+def make_ration(h,d):
+    g = gcd(h,d)
+    return (h // g,d // g)
+#选择器
+def ration_first(r):
+    return getitem(r,0)
+#选择器
+def ration_second(r):
+    return getitem(r,1)
+</code></pre>
+<p>抽象界限具有许多好处。一个好处就是，它们使程序更易于维护和修改。很少的函数依赖于特定的表现，当一个人希望修改表现时，不需要做很多修改。</p>
