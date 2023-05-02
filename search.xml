@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Wave Motion</title>
+      <link href="/2023/05/02/Wave-Motion/"/>
+      <url>/2023/05/02/Wave-Motion/</url>
+      
+        <content type="html"><![CDATA[<h3 id="波的能量："><a href="#波的能量：" class="headerlink" title="波的能量："></a>波的能量：</h3><p>（若无说明，这里研究的都是<strong>平面简谐纵波在直棒中传播</strong>，也就是大物考试内容）</p><ul><li><strong>波动的过程就是能量传播的过程</strong> </li><li><strong>与简谐运动不同，波的势能和动能是相等且同增同减的</strong>  </li></ul><p><strong>单个质元的机械能：</strong><script type="math/tex">dE = dK + dU =\rho\omega^2A^2sin^2(\omega t - kx )dV</script>  </p><p>在波动过程中，任一质元的动能和势能相等，且同相位变化  </p><p><strong>能量密度:</strong> <script type="math/tex">w = \frac{dE}{dV} = \frac{dK + dU}{dV} = \rho\omega^2A^2sin^2(\omega t - kx)</script>  </p><p>单位体积的介质中波动的能量就是能量密度  </p><p><strong>平均能量密度：</strong><script type="math/tex">\overline{w} = \frac{1}{T}\int_0^T\ \rho\omega^2A^2sin^2(\omega t - kx)dt = \frac{1}{2}\rho\omega^2A^2</script>  </p><p><strong>能流：</strong><script type="math/tex">P = \frac{wV}{\Delta t} = \frac{wvS\Delta t}{\Delta t} = wvS</script>  </p><p>单位时间内通过介质中某一面积的波动能量即为能流  </p><p><strong>能流密度:</strong><script type="math/tex">J = \frac{P}{S} = wv</script>  </p><p><strong>平均能流密度：</strong><script type="math/tex">I = \overline{J} = \frac{\overline{P}}{S} = \overline{w}v= \frac{1}{2}\rho\omega^2 A^2v</script></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Physics </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>电路分析基础note</title>
       <link href="/2023/04/24/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80note/"/>
       <url>/2023/04/24/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80note/</url>
