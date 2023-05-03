@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="by mjuicem">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chapter 3 电路分析方法">
+<meta property="og:url" content="https://mjuicem.github.io/2023/04/28/chapter3/index.html">
+<meta property="og:site_name" content="mjuicem&#39;s blog">
+<meta property="og:description" content="by mjuicem">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-28T14:37:45.000Z">
+<meta property="article:modified_time" content="2023-05-03T12:42:09.552Z">
+<meta property="article:author" content="mjuicem">
+<meta property="article:tag" content="Introduction to Electronic Systems">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Chapter 3 电路分析方法</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-86660611-1"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-86660611-1');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+    <script async defer
+            data-website-id="e77e68be-f6e4-4br3-9365-2b76b57cd571"
+            src="https://analytics.domain.com/umami.js">
+    </script>
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/tags/">tags</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">articles</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2023/04/28/chapter-4-yun-suan-fang-da-qi/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2023/04/24/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80note/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://mjuicem.github.io/2023/04/28/chapter3/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://mjuicem.github.io/2023/04/28/chapter3/&text=Chapter 3 电路分析方法"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://mjuicem.github.io/2023/04/28/chapter3/&title=Chapter 3 电路分析方法"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://mjuicem.github.io/2023/04/28/chapter3/&is_video=false&description=Chapter 3 电路分析方法"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Chapter 3 电路分析方法&body=Check out this article: https://mjuicem.github.io/2023/04/28/chapter3/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://mjuicem.github.io/2023/04/28/chapter3/&title=Chapter 3 电路分析方法"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://mjuicem.github.io/2023/04/28/chapter3/&title=Chapter 3 电路分析方法"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://mjuicem.github.io/2023/04/28/chapter3/&title=Chapter 3 电路分析方法"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://mjuicem.github.io/2023/04/28/chapter3/&title=Chapter 3 电路分析方法"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://mjuicem.github.io/2023/04/28/chapter3/&name=Chapter 3 电路分析方法&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://mjuicem.github.io/2023/04/28/chapter3/&t=Chapter 3 电路分析方法"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%98%98-Chapter-3-%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">😘 Chapter 3 电路分析方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A0%E5%8A%A0%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.1.</span> <span class="toc-text">叠加方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E7%94%B5%E5%8E%8B%E6%B3%95%EF%BC%88Node-voltage%EF%BC%89"><span class="toc-number">1.0.2.</span> <span class="toc-text">节点电压法（Node voltage）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E5%AD%94%E7%94%B5%E6%B5%81%E6%B3%95%EF%BC%88mesh-current%EF%BC%89"><span class="toc-number">1.0.3.</span> <span class="toc-text">网孔电流法（mesh current）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%B4%E7%BB%B4%E5%8D%97%E7%AD%89%E6%95%88%E7%94%B5%E8%B7%AF"><span class="toc-number">1.0.4.</span> <span class="toc-text">戴维南等效电路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Norton%E7%AD%89%E6%95%88%E7%94%B5%E8%B7%AF"><span class="toc-number">1.0.5.</span> <span class="toc-text">Norton等效电路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%8A%9F%E7%8E%87"><span class="toc-number">1.0.6.</span> <span class="toc-text">最大功率</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Chapter 3 电路分析方法
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">mjuicem</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-04-28T14:37:45.000Z" class="dt-published" itemprop="datePublished">2023-04-28</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Introduction-to-Electronic-Systems/" rel="tag">Introduction to Electronic Systems</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="😘-Chapter-3-电路分析方法"><a href="#😘-Chapter-3-电路分析方法" class="headerlink" title="😘 Chapter 3 电路分析方法"></a>😘 Chapter 3 电路分析方法</h1><h3 id="叠加方法"><a href="#叠加方法" class="headerlink" title="叠加方法"></a>叠加方法</h3><p>概念: 当一个电路中包含多个独立电源时，可以分别计算，即保留一个独立电源，然后KILL了所有其他电源（电压源短路，电流源开路）</p>
+<h3 id="节点电压法（Node-voltage）"><a href="#节点电压法（Node-voltage）" class="headerlink" title="节点电压法（Node voltage）"></a>节点电压法（Node voltage）</h3><p>题型：</p>
+<p>1.只包含独立电源（不考）</p>
+<p>2.电路中含有非独立源，需要多列一个关系方程</p>
+<p>3.当两个基本节点之间有一个电压源时（可以有串联），那么此时两个节点可以当作一个超节点来看待</p>
+<h3 id="网孔电流法（mesh-current）"><a href="#网孔电流法（mesh-current）" class="headerlink" title="网孔电流法（mesh current）"></a>网孔电流法（mesh current）</h3><p>题型：</p>
+<p>1.只包含独立电源（不考）</p>
+<p>2..电路中含有非独立源，需要多列一个关系方程</p>
+<p>3.当两个网孔间的支路上有电流源（包括受控电流源）时，这两个网孔可以看作一个超网孔</p>
+<h3 id="戴维南等效电路"><a href="#戴维南等效电路" class="headerlink" title="戴维南等效电路"></a>戴维南等效电路</h3><p>注意：求解戴维南诺顿等效电路时需使用节点电压法</p>
+<p><strong>求电压Vs的方法</strong></p>
+<p>1.将terminal两端开路，开路电压即为Vs的电压</p>
+<p><strong>求等效电阻Rth的方法：</strong></p>
+<p>1.独立电源置0（电压源短路，电流源开路），计算从指定端口看进去的电阻</p>
+<p>2.当第一种方法无法使用时，应直接计算端口短路电流I，然后用U/I = Rth 计算等效电阻</p>
+<p>3.当电路中没有独立电源时，开路电压V = 0，此时应在terminal两端加上激励电压源（或test voltage）,然后列节点电压法，算出terminal两端的电压与电流之比 V/I后就得到等效电阻R</p>
+<p>4.当电路中有独立电源时，也可以用3中的方法，但此时需要把独立电源置零(电压源短路，电流源开路)</p>
+<p>5.当题目比较复杂时，建议先用网孔法做</p>
+<p>关键题 ： Chapter3 课堂习题 3.23 37/67</p>
+<h3 id="Norton等效电路"><a href="#Norton等效电路" class="headerlink" title="Norton等效电路"></a>Norton等效电路</h3><p>电流源与电阻并联</p>
+<p>同上</p>
+<h3 id="最大功率"><a href="#最大功率" class="headerlink" title="最大功率"></a>最大功率</h3><p>当外电阻R == 总内电阻时，外电阻具有最大功率</p>
+<p>考四道题： 2/3章 7章</p>
+<p>电源转换定理 不考</p>
+<p>叠加定理</p>
+<p>节点法 必考</p>
+<p>网孔法 必考</p>
+<p>戴维南等效电路</p>
+<p>最大传输功率</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/tags/">tags</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">articles</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%98%98-Chapter-3-%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">😘 Chapter 3 电路分析方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A0%E5%8A%A0%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.1.</span> <span class="toc-text">叠加方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E7%94%B5%E5%8E%8B%E6%B3%95%EF%BC%88Node-voltage%EF%BC%89"><span class="toc-number">1.0.2.</span> <span class="toc-text">节点电压法（Node voltage）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E5%AD%94%E7%94%B5%E6%B5%81%E6%B3%95%EF%BC%88mesh-current%EF%BC%89"><span class="toc-number">1.0.3.</span> <span class="toc-text">网孔电流法（mesh current）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%B4%E7%BB%B4%E5%8D%97%E7%AD%89%E6%95%88%E7%94%B5%E8%B7%AF"><span class="toc-number">1.0.4.</span> <span class="toc-text">戴维南等效电路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Norton%E7%AD%89%E6%95%88%E7%94%B5%E8%B7%AF"><span class="toc-number">1.0.5.</span> <span class="toc-text">Norton等效电路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%8A%9F%E7%8E%87"><span class="toc-number">1.0.6.</span> <span class="toc-text">最大功率</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://mjuicem.github.io/2023/04/28/chapter3/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://mjuicem.github.io/2023/04/28/chapter3/&text=Chapter 3 电路分析方法"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://mjuicem.github.io/2023/04/28/chapter3/&title=Chapter 3 电路分析方法"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://mjuicem.github.io/2023/04/28/chapter3/&is_video=false&description=Chapter 3 电路分析方法"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Chapter 3 电路分析方法&body=Check out this article: https://mjuicem.github.io/2023/04/28/chapter3/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://mjuicem.github.io/2023/04/28/chapter3/&title=Chapter 3 电路分析方法"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://mjuicem.github.io/2023/04/28/chapter3/&title=Chapter 3 电路分析方法"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://mjuicem.github.io/2023/04/28/chapter3/&title=Chapter 3 电路分析方法"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://mjuicem.github.io/2023/04/28/chapter3/&title=Chapter 3 电路分析方法"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://mjuicem.github.io/2023/04/28/chapter3/&name=Chapter 3 电路分析方法&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://mjuicem.github.io/2023/04/28/chapter3/&t=Chapter 3 电路分析方法"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    mjuicem
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/tags/">tags</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">articles</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0dabb6e21848405483a237e6a7b6ed04"}'></script>
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

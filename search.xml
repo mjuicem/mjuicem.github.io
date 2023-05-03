@@ -4,17 +4,36 @@
   
     
     <entry>
-      <title>电路分析基础-Chapter 7 正弦稳态分析</title>
-      <link href="/2023/05/03/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80-Chapter-7/"/>
-      <url>/2023/05/03/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80-Chapter-7/</url>
+      <title>Chapter 5 RL和RC电路的固有响应阶跃响应</title>
+      <link href="/2023/05/03/chapter-5-rl-he-rc-dian-lu-de-gu-you-xiang-ying-he-jie-yue-xiang-ying/"/>
+      <url>/2023/05/03/chapter-5-rl-he-rc-dian-lu-de-gu-you-xiang-ying-he-jie-yue-xiang-ying/</url>
       
-        <content type="html"><![CDATA[<h3 id="复数的基本概念"><a href="#复数的基本概念" class="headerlink" title="复数的基本概念"></a>复数的基本概念</h3><p><strong>欧拉公式：</strong><script type="math/tex">e^{j\varphi} = cos\varphi + jsin\varphi</script>，<script type="math/tex">e^{-j\varphi} = cos\varphi - jsin\varphi</script>  </p><p><strong>复数：</strong><script type="math/tex">z = a + bj</script></p><p>​            <script type="math/tex">z^* = a - bj</script></p><p>​    <script type="math/tex">a = Re[z]</script> ，  <script type="math/tex">b = Im[z]</script></p><p><strong>复数的极坐标形式:</strong>   </p><p>因为<script type="math/tex">a = rcos\varphi</script>，<script type="math/tex">b = rsin\varphi</script></p><p>所以 <script type="math/tex">z = r(cos\varphi + jsin\varphi)</script>  </p><p><strong>复数的指数表达形式:</strong>  </p><script type="math/tex; mode=display">z = r(cos\varphi + jsin\varphi ) = re^{j\varphi} = r\angle \varphi</script><p><strong>复数的运算：</strong>  </p><ul><li>加法：<script type="math/tex">z_1 = a_1 + b_1j</script> ，<script type="math/tex">z_2 = a_2 + b_2j</script>    =&gt; <script type="math/tex">z_1 + z_2 = (a_1 + a_2) + (b_1 + b_2)j</script></li></ul><p><em>Tips</em>：当进行相量加法时，应用复数的正常形式进行运算</p><ul><li><p>乘法：<script type="math/tex">z_1 = r_1e^{j\varphi_1} = r_1\angle \varphi_1</script>，<script type="math/tex">z_2 = r_2e^{j\varphi_2} = r_2\angle \varphi_2</script> =&gt; <script type="math/tex">z1 * z2 = r_1r_2\angle \varphi_1 + \varphi_2</script></p></li><li><p>除法: <script type="math/tex">\frac{z_1}{z_2} = \frac{r1}{r2}\angle \varphi_1 - \varphi_2</script></p></li></ul><h3 id="相量变换与反相量变换"><a href="#相量变换与反相量变换" class="headerlink" title="相量变换与反相量变换"></a>相量变换与反相量变换</h3><p>正弦函数的<strong>相量(phasor)</strong>是含幅值和相位角的复数，欧拉公式给出了指数函数和三角函数的关系</p><p><strong>正弦电源：</strong><script type="math/tex">v(t) = V_mcos(wt + \varphi) = Re[V_m(cos(wt+\varphi) + jsin(wt+\varphi))] = Re[V_me^{j(wt + \varphi)}]</script>  </p><p>可以注意到<script type="math/tex">V_me^{j\varphi}</script>是一个既包含正弦函数幅值和相位角的复数，我们称这个复数为给定正弦函数的<strong>相量</strong></p><p><strong>相量（Phasor)：</strong>  <strong>V</strong> = <script type="math/tex">V_me^{j\varphi}</script></p><p><strong>相量变换：</strong>我们称<script type="math/tex">P[V_mcos(wt+\varphi)]</script> 为<script type="math/tex">V_mcos(wt + \varphi)</script>的相量变换</p><p>其中<script type="math/tex">P[V_mcos(wt+\varphi )] = V_me^{j\varphi} = V_m\angle \varphi</script></p><p><strong>反相量变换：</strong>反相量变换即为相量变换的逆运算</p><script type="math/tex; mode=display">P^{-1}[V_me^{j\varphi}] = V_mcos(wt + \varphi)</script><p><strong>相量变换的作用：</strong></p><blockquote><p><strong>Phasor transform transfers the sinusoidal function from time domain to phasor domain, which is also called</strong> <strong>frequency domain</strong></p></blockquote><h3 id="频率域下的无源电路元件"><a href="#频率域下的无源电路元件" class="headerlink" title="频率域下的无源电路元件"></a>频率域下的无源电路元件</h3><p><strong>阻抗(impedance)：</strong><script type="math/tex">\hat{Z}</script></p><p><strong>电阻：</strong> <script type="math/tex">\hat{V} = R\hat{I} \Rightarrow Z_R = R</script>  </p><p><strong>电感：</strong><script type="math/tex">\hat{V} = \frac{1}{jwC} \hat{I} \Rightarrow Z_L = jwL</script></p><p><strong>电容：</strong><script type="math/tex">\hat{V} = jwL\hat{I} \Rightarrow Z_c = \frac{1}{jwC}</script>    <em>Tips：</em>注意电容和电流的正负关系</p><h3 id="频率域下的KCL和KVL"><a href="#频率域下的KCL和KVL" class="headerlink" title="频率域下的KCL和KVL"></a>频率域下的KCL和KVL</h3><p><strong>KCL:</strong><script type="math/tex">\sum \hat{I} = 0</script></p><p><strong>KVL:</strong> <script type="math/tex">\sum \hat{V} = 0</script></p><p>频率域下的电压电流、阻抗串并关系不发生改变</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="🧐-Chapter-5-RL-和-RC电路的固有响应和阶跃响应"><a href="#🧐-Chapter-5-RL-和-RC电路的固有响应和阶跃响应" class="headerlink" title="🧐 Chapter 5 RL 和 RC电路的固有响应和阶跃响应"></a>🧐 Chapter 5 RL 和 RC电路的固有响应和阶跃响应</h1><h2 id="电容和电感"><a href="#电容和电感" class="headerlink" title="电容和电感"></a>电容和电感</h2><p>不同于电阻，电容和电感都是动态原件，即其具有记忆功能，能够在外界激励的作用下储存能量，这一整章都是围绕的电容和电容的特性展开的，故在此先介绍下电容与电感的特性</p><h3 id="电容-capacitor-："><a href="#电容-capacitor-：" class="headerlink" title="电容(capacitor)："></a>电容(capacitor)：</h3><p><img src="https://user-images.githubusercontent.com/114148730/233823390-32182f9e-302e-4f29-8079-730c28184b7b.png" alt="image"></p><p>电容的作用是通交流，阻直流，故在直流稳态时可看作是开路</p><p>注意：电容的电压不能发生跃变</p><script type="math/tex; mode=display">i_c=C{du_c\over dt}</script><p>电容的串并: <img src="https://user-images.githubusercontent.com/114148730/233823415-38594735-d706-4df3-a4ec-72046412807e.png" alt="image">&#x20;</p><p>(电容的串并关系与电感（或者说与电阻串并联计算方式）正好相反，所以记忆起来很方便)</p><h3 id="电感-inductor-："><a href="#电感-inductor-：" class="headerlink" title="电感(inductor)："></a>电感(inductor)：</h3><p><img src="https://user-images.githubusercontent.com/114148730/233823444-d5b73304-28e9-4493-aac6-e6b05d7725f2.png" alt="image">&#x20;</p><p>电感的作用是阻碍电流的变化，当流经电感线圈的电流为常数时，电感线圈两端电压为0，表现为通直流，阻交流的效果，在直流稳态时，视为短路</p><p>注意：电感的电压不能发生跃变！</p><script type="math/tex; mode=display">u_L=L{di_L\over dt}</script><p>电感的串并： <img src="https://user-images.githubusercontent.com/114148730/233823579-3a9bc8d8-29df-4cd7-8c6a-b87d744ce5ac.png" alt="image"> <img src="https://user-images.githubusercontent.com/114148730/233823584-02a80484-aedb-4b4a-9d14-5cc22b96c558.png" alt="image"></p><p>(电感的串并关系与电阻串并联计算方式正好相同）</p><h3 id="换路定则"><a href="#换路定则" class="headerlink" title="换路定则"></a>换路定则</h3><p>换路：由电路开关的闭合或断开、电路元件参数变化引起的电路变化称为换路</p><p>根据上述电容、电感的分析，我们不难得到：</p><script type="math/tex; mode=display">i_L(0^+)=i_L(0^-)$$：电感的电流在换路瞬间不能突变$$U_C(0^+)=U_C(0^-)$$：电容电压在换路瞬间不能突变### 电容和电感的能量对于电容:$$w(t) = \frac{1}{2}Cu^2(t)</script><p>对于电感:</p><script type="math/tex; mode=display">w(t) = \frac{1}{2}Li^2(t)</script><h2 id="RC和RL电路的固有响应"><a href="#RC和RL电路的固有响应" class="headerlink" title="RC和RL电路的固有响应"></a>RC和RL电路的固有响应</h2><p>顾名思义，RC电路即为电阻电容电路，RL电路即为电阻电感电路 固有响应是指t&gt;0时无外接激励 <img src="https://user-images.githubusercontent.com/114148730/233823689-3edcca99-8694-4538-bd0c-eeb3f352c601.png" alt="image"></p><h2 id="RC和RL电路的阶跃响应"><a href="#RC和RL电路的阶跃响应" class="headerlink" title="RC和RL电路的阶跃响应"></a>RC和RL电路的阶跃响应</h2><p>阶跃响应是指t=0时电感或电容没有能量的存储 <img src="https://user-images.githubusercontent.com/114148730/233824006-142ad996-b9c6-4ab6-a323-42764d693b7d.png" alt="image"></p><h2 id="RC和RL电路的一般方法"><a href="#RC和RL电路的一般方法" class="headerlink" title="RC和RL电路的一般方法"></a>RC和RL电路的一般方法</h2><p><img src="https://user-images.githubusercontent.com/114148730/233824045-bc4dac60-9094-45d6-a0e6-6553d21b76f3.png" alt="image"></p><p>上述公式为总结公式，在进行RC和RL电路时域分析时，只需要将上述公式中的y更换为i或u即可。</p><p>也就是: <script type="math/tex">u_C(t)=u_C(+∞)+[u_C(t_0^+)-u_C(+∞)]e^{-t\over RC}</script>(其中，R 是电路换路后，将电容断开，从端口看进去的Thevenin等效电阻)</p><p><script type="math/tex">i_L(t)=i_L(+∞)+[i_L(t_0^+)-i_L(+∞)]e^{-Rt\over L}</script>（其中，R是电路换路后。将电感断开，从端口看进去的Thevenin等效电阻）</p><h2 id="RC和RL电路拨两次开关问题的思路："><a href="#RC和RL电路拨两次开关问题的思路：" class="headerlink" title="RC和RL电路拨两次开关问题的思路："></a>RC和RL电路拨两次开关问题的思路：</h2><h3 id="1-三要素法："><a href="#1-三要素法：" class="headerlink" title="1.三要素法："></a>1.三要素法：</h3><ul><li>算出时间常数</li><li>判断t——&gt;∞时y的数值</li><li>t（0+） = t(0-)&#x20;</li><li>tips:注意求解三要素时，公式中的L和C都为等效元件，R的数值为L或C两端的戴维南等效电路算出的电阻</li></ul><h3 id="2-第一次拨开关"><a href="#2-第一次拨开关" class="headerlink" title="2.第一次拨开关"></a>2.第一次拨开关</h3><ul><li>正确画出电路图</li><li>三要素法</li><li>算出第二次拨开关时端点的数值</li></ul><h3 id="3-第二次拨开关"><a href="#3-第二次拨开关" class="headerlink" title="3.第二次拨开关"></a>3.第二次拨开关</h3><ul><li>正确画出电路图</li><li>三要素法</li><li>初状态为第一次拨开关的末状态</li></ul><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary:"></a>Summary:</h2><p>期末：1题（有几率考两次拨开关问题） 这一章围绕的就是RC和RL电路的拨开关问题，在掌握了一般方法后，还应该熟悉用戴维南等效电路求等效电阻的方法，总得来说知识点不难，但是题目的情境往往比较复杂，所以需要多刷题…</p>]]></content>
       
       
       
         <tags>
             
-            <tag> 电路分析基础 </tag>
+            <tag> Introduction to Electronic Systems </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Chapter 7 正弦稳态分析</title>
+      <link href="/2023/05/03/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80-Chapter-7/"/>
+      <url>/2023/05/03/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80-Chapter-7/</url>
+      
+        <content type="html"><![CDATA[<h3 id="复数的基本概念"><a href="#复数的基本概念" class="headerlink" title="复数的基本概念"></a>复数的基本概念</h3><p><strong>欧拉公式：</strong><script type="math/tex">e^{j\varphi} = cos\varphi + jsin\varphi</script>，<script type="math/tex">e^{-j\varphi} = cos\varphi - jsin\varphi</script>  </p><p><strong>复数：</strong><script type="math/tex">z = a + bj</script></p><p>​            <script type="math/tex">z^* = a - bj</script></p><p>​    <script type="math/tex">a = Re[z]</script> ，  <script type="math/tex">b = Im[z]</script></p><p><strong>复数的极坐标形式:</strong> </p><p>因为<script type="math/tex">a = rcos\varphi</script>，<script type="math/tex">b = rsin\varphi</script></p><p>所以 <script type="math/tex">z = r(cos\varphi + jsin\varphi)</script>  </p><p><strong>复数的指数表达形式:</strong></p><script type="math/tex; mode=display">z = r(cos\varphi + jsin\varphi ) = re^{j\varphi} = r\angle \varphi</script><p><strong>复数的运算：</strong>  </p><ul><li>加法：<script type="math/tex">z_1 = a_1 + b_1j</script> ，<script type="math/tex">z_2 = a_2 + b_2j</script>    =&gt; <script type="math/tex">z_1 + z_2 = (a_1 + a_2) + (b_1 + b_2)j</script></li></ul><p><em>Tips</em>：当进行相量加法时，应用复数的正常形式进行运算</p><ul><li><p>乘法：<script type="math/tex">z_1 = r_1e^{j\varphi_1} = r_1\angle \varphi_1</script>，<script type="math/tex">z_2 = r_2e^{j\varphi_2} = r_2\angle \varphi_2</script> =&gt; <script type="math/tex">z1 * z2 = r_1r_2\angle \varphi_1 + \varphi_2</script></p></li><li><p>除法: <script type="math/tex">\frac{z_1}{z_2} = \frac{r1}{r2}\angle \varphi_1 - \varphi_2</script></p></li></ul><h3 id="相量变换与反相量变换"><a href="#相量变换与反相量变换" class="headerlink" title="相量变换与反相量变换"></a>相量变换与反相量变换</h3><p>正弦函数的<strong>相量(phasor)</strong>是含幅值和相位角的复数，欧拉公式给出了指数函数和三角函数的关系</p><p><strong>正弦电源：</strong><script type="math/tex">v(t) = V_mcos(wt + \varphi) = Re[V_m(cos(wt+\varphi) + jsin(wt+\varphi))] = Re[V_me^{j(wt + \varphi)}]</script>  </p><p>可以注意到<script type="math/tex">V_me^{j\varphi}</script>是一个既包含正弦函数幅值和相位角的复数，我们称这个复数为给定正弦函数的<strong>相量</strong></p><p><strong>相量（Phasor)：</strong>  <strong>V</strong> = <script type="math/tex">V_me^{j\varphi}</script></p><p><strong>相量变换：</strong>我们称<script type="math/tex">P[V_mcos(wt+\varphi)]</script> 为<script type="math/tex">V_mcos(wt + \varphi)</script>的相量变换</p><p>其中<script type="math/tex">P[V_mcos(wt+\varphi )] = V_me^{j\varphi} = V_m\angle \varphi</script></p><p><strong>反相量变换：</strong>反相量变换即为相量变换的逆运算</p><script type="math/tex; mode=display">P^{-1}[V_me^{j\varphi}] = V_mcos(wt + \varphi)</script><p><strong>相量变换的作用：</strong></p><blockquote><p><strong>Phasor transform transfers the sinusoidal function from time domain to phasor domain, which is also called</strong> <strong>frequency domain</strong></p></blockquote><h3 id="频率域下的无源电路元件"><a href="#频率域下的无源电路元件" class="headerlink" title="频率域下的无源电路元件"></a>频率域下的无源电路元件</h3><p><strong>阻抗(impedance)：</strong><script type="math/tex">\hat{Z}</script></p><p><strong>电阻：</strong> <script type="math/tex">\hat{V} = R\hat{I} \Rightarrow Z_R = R</script>  </p><p><strong>电感：</strong><script type="math/tex">\hat{V} = \frac{1}{jwC} \hat{I} \Rightarrow Z_L = jwL</script></p><p><strong>电容：</strong><script type="math/tex">\hat{V} = jwL\hat{I} \Rightarrow Z_c = \frac{1}{jwC}</script>    <em>Tips：</em>注意电容和电流的正负关系</p><h3 id="频率域下的KCL和KVL"><a href="#频率域下的KCL和KVL" class="headerlink" title="频率域下的KCL和KVL"></a>频率域下的KCL和KVL</h3><p><strong>KCL:</strong><script type="math/tex">\sum \hat{I} = 0</script></p><p><strong>KVL:</strong> <script type="math/tex">\sum \hat{V} = 0</script></p><p>频率域下的电压电流、阻抗串并关系不发生改变</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Introduction to Electronic Systems </tag>
             
         </tags>
       
@@ -42,6 +61,44 @@
     
     
     <entry>
+      <title>运算放大器</title>
+      <link href="/2023/04/28/chapter-4-yun-suan-fang-da-qi/"/>
+      <url>/2023/04/28/chapter-4-yun-suan-fang-da-qi/</url>
+      
+        <content type="html"><![CDATA[<h1 id="🥰-Chapter-4-运算放大器"><a href="#🥰-Chapter-4-运算放大器" class="headerlink" title="🥰 Chapter 4 运算放大器"></a>🥰 Chapter 4 运算放大器</h1><h2 id="理想运算放大器-ideal-op-amp"><a href="#理想运算放大器-ideal-op-amp" class="headerlink" title="理想运算放大器 ideal op amp"></a>理想运算放大器 ideal op amp</h2><h4 id="一般原理"><a href="#一般原理" class="headerlink" title="一般原理"></a>一般原理</h4><p>理想的运放电路分析有两大重要原则贯穿始终，即“虚短”与“虚断”。“虚短”的意思是正端和负端接近短路，即V+=V-,看起来像“短路”;“虚断”的意思是流入正端及负端的电流接近于零，即I+=I-=0,看起来像断路（因为输入阻抗无穷大）</p><h4 id="端电压和端电流"><a href="#端电压和端电流" class="headerlink" title="端电压和端电流"></a>端电压和端电流</h4><ul><li>所有电压相对于公共节点为电压升</li><li>所有电流参考方向都是进入运放的端子</li><li><script type="math/tex; mode=display">v_p=v_n</script></li><li><script type="math/tex; mode=display">i_p=i_n=0</script></li></ul><div><figure><img src=".gitbook/assets/截屏2023-04-23 15.20.35.png" alt=""><figcaption></figcaption></figure><figure><img src=".gitbook/assets/截屏2023-04-23 15.20.50.png" alt=""><figcaption></figcaption></figure></div><h4 id="反向放大器"><a href="#反向放大器" class="headerlink" title="反向放大器"></a>反向放大器</h4><p><strong>比例器</strong></p><p><img src="https://user-images.githubusercontent.com/114148730/233790332-9954cfa1-9b22-45fc-a159-ab297463fe0d.png" alt="image"></p><script type="math/tex; mode=display">v_p=v_n=0</script><script type="math/tex; mode=display">i_p=i_n=0</script><p><strong>求和放大器</strong></p><p><img src="https://user-images.githubusercontent.com/114148730/233790351-68ac9255-ada2-4eab-b349-5254daaf5597.png" alt="image"></p><h4 id="同向放大器"><a href="#同向放大器" class="headerlink" title="同向放大器"></a>同向放大器</h4><p><img src="https://user-images.githubusercontent.com/114148730/233790359-9bd7b73f-0b6e-41d1-9b59-f607dea195c4.png" alt="image"></p><script type="math/tex; mode=display">v_1=v_2=v_S</script><script type="math/tex; mode=display">i_p=i_n=0</script><h4 id="差分放大器-难点"><a href="#差分放大器-难点" class="headerlink" title="差分放大器(难点)"></a>差分放大器(难点)</h4><p><img src="https://user-images.githubusercontent.com/114148730/233790374-ccfdfd15-3e9a-4bb6-8770-acb81832dc8f.png" alt="image"></p><p>差分放大器的题型非常多，所以没有现成的公式可以记，所以应该对每道题按&#x20;</p><p>1.虚短虚断(<script type="math/tex">i_p=i_n=0</script>, <script type="math/tex">v_p=v_s</script>)</p><p>&#x20;2.KCL列方程</p><p>这两个步骤</p><p><strong>差分放大器中的叠加方法</strong></p><p><img src="https://user-images.githubusercontent.com/114148730/233790384-02982321-b093-4c50-ae6f-b2ba9dada13c.png" alt="image"></p><h4 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h4><p><img src="https://user-images.githubusercontent.com/114148730/233790394-ecb2bb79-081a-4a87-807d-719d2f7a5044.png" alt="image"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Introduction to Electronic Systems </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Chapter 3 电路分析方法</title>
+      <link href="/2023/04/28/chapter3/"/>
+      <url>/2023/04/28/chapter3/</url>
+      
+        <content type="html"><![CDATA[<h1 id="😘-Chapter-3-电路分析方法"><a href="#😘-Chapter-3-电路分析方法" class="headerlink" title="😘 Chapter 3 电路分析方法"></a>😘 Chapter 3 电路分析方法</h1><h3 id="叠加方法"><a href="#叠加方法" class="headerlink" title="叠加方法"></a>叠加方法</h3><p>概念: 当一个电路中包含多个独立电源时，可以分别计算，即保留一个独立电源，然后KILL了所有其他电源（电压源短路，电流源开路）</p><h3 id="节点电压法（Node-voltage）"><a href="#节点电压法（Node-voltage）" class="headerlink" title="节点电压法（Node voltage）"></a>节点电压法（Node voltage）</h3><p>题型：</p><p>1.只包含独立电源（不考）</p><p>2.电路中含有非独立源，需要多列一个关系方程</p><p>3.当两个基本节点之间有一个电压源时（可以有串联），那么此时两个节点可以当作一个超节点来看待</p><h3 id="网孔电流法（mesh-current）"><a href="#网孔电流法（mesh-current）" class="headerlink" title="网孔电流法（mesh current）"></a>网孔电流法（mesh current）</h3><p>题型：</p><p>1.只包含独立电源（不考）</p><p>2..电路中含有非独立源，需要多列一个关系方程</p><p>3.当两个网孔间的支路上有电流源（包括受控电流源）时，这两个网孔可以看作一个超网孔</p><h3 id="戴维南等效电路"><a href="#戴维南等效电路" class="headerlink" title="戴维南等效电路"></a>戴维南等效电路</h3><p>注意：求解戴维南诺顿等效电路时需使用节点电压法</p><p><strong>求电压Vs的方法</strong></p><p>1.将terminal两端开路，开路电压即为Vs的电压</p><p><strong>求等效电阻Rth的方法：</strong></p><p>1.独立电源置0（电压源短路，电流源开路），计算从指定端口看进去的电阻</p><p>2.当第一种方法无法使用时，应直接计算端口短路电流I，然后用U/I = Rth 计算等效电阻</p><p>3.当电路中没有独立电源时，开路电压V = 0，此时应在terminal两端加上激励电压源（或test voltage）,然后列节点电压法，算出terminal两端的电压与电流之比 V/I后就得到等效电阻R</p><p>4.当电路中有独立电源时，也可以用3中的方法，但此时需要把独立电源置零(电压源短路，电流源开路)</p><p>5.当题目比较复杂时，建议先用网孔法做</p><p>关键题 ： Chapter3 课堂习题 3.23 37/67</p><h3 id="Norton等效电路"><a href="#Norton等效电路" class="headerlink" title="Norton等效电路"></a>Norton等效电路</h3><p>电流源与电阻并联</p><p>同上</p><h3 id="最大功率"><a href="#最大功率" class="headerlink" title="最大功率"></a>最大功率</h3><p>当外电阻R == 总内电阻时，外电阻具有最大功率</p><p>考四道题： 2/3章 7章</p><p>电源转换定理 不考</p><p>叠加定理</p><p>节点法 必考</p><p>网孔法 必考</p><p>戴维南等效电路</p><p>最大传输功率</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Introduction to Electronic Systems </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>电路分析基础note</title>
       <link href="/2023/04/24/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80note/"/>
       <url>/2023/04/24/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80note/</url>
@@ -52,7 +109,7 @@
       
         <tags>
             
-            <tag> 电路分析基础 </tag>
+            <tag> Introduction to Electronic Systems </tag>
             
         </tags>
       
