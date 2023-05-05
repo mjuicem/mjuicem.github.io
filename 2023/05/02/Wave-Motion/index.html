@@ -13,14 +13,11 @@
 <meta property="og:site_name" content="mjuicem&#39;s blog">
 <meta property="og:description" content="波的能量：（若无说明，这里研究的都是平面简谐纵波在直棒中传播，也就是大物考试内容）  波动的过程就是能量传播的过程  与简谐运动不同，波的势能和动能是相等且同增同减的    单个质元的机械能：dE &#x3D; dK + dU &#x3D;\rho\omega^2A^2sin^2(\omega t - kx )dV   在波动过程中，任一质元的动能和势能相等，且同相位变化   能量密度(Energy density)">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="c:/Users/86138/AppData/Roaming/Typora/typora-user-images/image-20230504154403854.png">
-<meta property="og:image" content="c:/Users/86138/AppData/Roaming/Typora/typora-user-images/image-20230504164439027.png">
 <meta property="article:published_time" content="2023-05-02T14:25:08.000Z">
-<meta property="article:modified_time" content="2023-05-04T09:05:04.564Z">
+<meta property="article:modified_time" content="2023-05-04T09:16:40.074Z">
 <meta property="article:author" content="mjuicem">
 <meta property="article:tag" content="Physics">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:/Users/86138/AppData/Roaming/Typora/typora-user-images/image-20230504154403854.png">
     
     
       
@@ -202,36 +199,37 @@
 <table>
 <thead>
 <tr>
+<th></th>
 <th>Simple Harmonic Oscillation</th>
-<th></th>
-<th></th>
+<th>Harmonic Wave</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td>运动学方程</td>
+<td><script type="math/tex">y(t) = Acos(wt + \varphi)</script></td>
+<td><script type="math/tex">y(x,t) = Acos(wt \pm kx + \varphi)</script></td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td>动力学方程</td>
+<td><script type="math/tex">\frac{d^2y}{dt^2}+w^2y = 0</script></td>
+<td><script type="math/tex">\frac{\partial^2y}{\partial x^2}  = \frac{1}{v^2}\frac{\partial^2y}{\partial t^2}</script></td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>能量</td>
+<td><script type="math/tex">E_{mech} = constant</script></td>
+<td><script type="math/tex">I = \frac{\overline{P}}{S} = \overline{w}v=\frac{1}{2}\rho \omega^2A^2v</script></td>
 </tr>
 </tbody>
 </table>
 </div>
-<h3 id="半波损失"><a href="#半波损失" class="headerlink" title="半波损失"></a>半波损失</h3><h3 id="波的叠加和干涉"><a href="#波的叠加和干涉" class="headerlink" title="波的叠加和干涉"></a>波的叠加和干涉</h3><ul>
+<h3 id="半波损失"><a href="#半波损失" class="headerlink" title="半波损失"></a>半波损失</h3><p><strong>在垂直入射和掠射的情况下，当波由波疏介质射入波密介质发生反射的时候，就会发生半波损失</strong></p>
+<h3 id="波的叠加和干涉"><a href="#波的叠加和干涉" class="headerlink" title="波的叠加和干涉"></a>波的叠加和干涉</h3><ul>
 <li><p><strong>干涉的条件：</strong>有相同的振动分量；相位差不随时间发生改变；有相同的频率</p>
 </li>
 <li><p><strong>干涉：</strong>两列波在空间相遇（叠加），以致在空间的某些地方振动始终加强，而在空间的另一些地方振动始终减弱或完全消失的现象。</p>
 </li>
 </ul>
-<p>​    <img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20230504154403854.png" alt="image-20230504154403854" style="zoom:50%;" />d</p>
 <script type="math/tex; mode=display">S_1: y_1 = A_1cos(wt-kr_1+\varphi_1)</script><script type="math/tex; mode=display">S_2 : y_2 = A_2cos(wt-kr_2 + \varphi_2)</script><p>在P点两个波发生叠加后得：<script type="math/tex">y = y_1 + y_2 = Acos(wt + \varphi)</script></p>
 <p>其中<script type="math/tex">A = \sqrt{A_1^2 + A_2^2 + 2A_1A_2cos\Delta \varphi}</script></p>
 <script type="math/tex; mode=display">\Delta \varphi = \varphi_1 - \varphi_2 + k(r_2 - r_1)</script><script type="math/tex; mode=display">\varphi = arctan \frac{A_1sin\varphi_1 + A_2sin\varphi_2}{A_1cos\varphi_1 + A_2cos\varphi_2}</script><script type="math/tex; mode=display">\because I \propto A_2</script><script type="math/tex; mode=display">\therefore I = I_1 + I_2 + 2\sqrt{I_1I_2}cos\Delta\varphi</script><p>当<script type="math/tex">\Delta\varphi = \pm2m\pi</script>时，<script type="math/tex">I_{max} = I_1 + I_2 +2\sqrt{I_1I_2}</script></p>
@@ -239,9 +237,9 @@
 <h3 id="驻波"><a href="#驻波" class="headerlink" title="驻波"></a>驻波</h3><ul>
 <li><strong>驻波产生的条件：</strong>振幅、频率、传播速度都相同的两列相干波，在同一直线上沿相反方向传播时叠加而形成的一种特殊的干涉现象。（就是什么都一样 ，就是传播速度方向相反，就可以形成驻波了。初相可以不同）</li>
 </ul>
-<p><img src="C:\Users\86138\AppData\Roaming\Typora\typora-user-images\image-20230504164439027.png" alt="image-20230504164439027"></p>
-<p><strong><script type="math/tex">y_1 = Acos(wt-kx)</script>(+x direction)</strong></p>
-<script type="math/tex; mode=display">y_2 = Acos(wt + kx)$$**(-x direction)**
+<script type="math/tex; mode=display">y_1 = Acos(wt-kx) $$**(+x direction)**
+
+$$y_2 = Acos(wt + kx)$$**(-x direction)**
 
 $$y = y_1 + y_2 = 2Acos(kx)cos(wt)</script><p><strong>幅值和位移的关系：</strong></p>
 <p>amplitude = <script type="math/tex">\vert2Acoskx\vert</script></p>
