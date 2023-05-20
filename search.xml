@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Capacitance and Electric Energy Storage</title>
+      <link href="/2023/05/19/Capacitance-and-Electric-Energy-Storage/"/>
+      <url>/2023/05/19/Capacitance-and-Electric-Energy-Storage/</url>
+      
+        <content type="html"><![CDATA[<h4 id="电容"><a href="#电容" class="headerlink" title="电容"></a>电容</h4><ul><li><p><strong>平行板电容</strong></p><p>$E = \frac{\sigma}{\varepsilon_0} = \frac{Q}{\varepsilon_0 A}$</p><p>$V = Ed = \frac{Qd}{\varepsilon_0 A}$</p><p>$C = \frac{Q}{V} = \varepsilon_0\frac{A}{d}$</p></li><li><p><strong>球形电容</strong>（内球面半径为a,外球面半径为b)</p><p>$E = \frac{1}{4\pi \varepsilon_0} \frac{Q}{r} (a &lt; r &lt; b)$</p><p>$V = \int_+ ^ -Edr = \int_a^bEdr =  \frac{Q}{4\pi \varepsilon_0}(\frac{1}{a} - \frac{1}{b}) =\frac{Q}{4\pi \varepsilon_0}(\frac{b - a}{ab})$</p><p>$C = \frac{Q}{V} =4\pi \varepsilon_0 \frac{ab}{b - a}$ </p></li><li><p><strong>圆柱形电容</strong></p><p>选取一个圆柱形高斯面</p><p>​    $\because \oint EdA = E*2\pi r l = \frac{\lambda l}{\varepsilon_0} $ =&gt; $E = \frac{\lambda}{2\pi r \varepsilon_0}$</p><p>​    $\therefore \Delta V = \int_a ^bEdr = \frac{\lambda}{2\pi  \varepsilon_0}ln(\frac{b}{a})$</p><p>​                $C = \frac{Q}{\Delta} = \frac{\lambda l}{\Delta V} = \frac{2\pi l \varepsilon_0}{ln(\frac{b}{a})}$</p></li></ul><h4 id="电容的能量"><a href="#电容的能量" class="headerlink" title="电容的能量"></a>电容的能量</h4><p>对于电容器，其静电能很容易计算。设两个极板分别带电 $+q$ ,$-q$  ，其中负电极板接地，则正电极板的电势为 $V = \frac{Q}{C}$，那么该电容器所带的静电能就为</p><script type="math/tex; mode=display">W_e = \frac{1}{2}QV =\frac{1}{2} \frac{Q^2}{C} = \frac{1}{2} CV^2</script><h4 id="静电场的能量密度"><a href="#静电场的能量密度" class="headerlink" title="静电场的能量密度"></a>静电场的能量密度</h4><p>就拿平行板电容来举例：</p><p>$\because C = \varepsilon_0 \frac{A}{d}$</p><p>$\Delta V = Ed$   </p><p>$E = \frac{\sigma}{\varepsilon_0}$</p><p>$\therefore U = W_e = \frac{1}{2}C\Delta V^2 = \frac{1}{2}\varepsilon_0E^2(Ad)$</p><p>定义能量密度为 : $u = \frac{U}{Ad} = \frac{1}{2}\varepsilon_0E^2$</p><p>有了电场中任意一点的能量密度之后，我们就能求得整个静电场的能量:</p><script type="math/tex; mode=display">U = \int dU = \iiint udV = \iiint (\frac{1}{2}\varepsilon_0E^2)dV</script><h4 id="电介质"><a href="#电介质" class="headerlink" title="电介质"></a>电介质</h4>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Physics </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Chapter 7 正弦稳态分析</title>
       <link href="/2023/05/03/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80-Chapter-7/"/>
       <url>/2023/05/03/%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80-Chapter-7/</url>
