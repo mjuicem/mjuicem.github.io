@@ -3,308 +3,558 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>mjuicem</title>
+    <title>Junming Lin</title>
 
     <meta name="author" content="Junming Lin">
+    <meta name="description" content="Junming Lin — Master's student at Tsinghua University working on multimodal large language models and agentic reinforcement learning.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="images/cartoon_mjuicem.jpg
-    " type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    
+    <meta name="theme-color" content="#fcfcfd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#101318" media="(prefers-color-scheme: dark)">
+    <link rel="shortcut icon" href="images/cartoon_mjuicem.jpg" type="image/jpeg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Apply saved theme before first paint to avoid flashing -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t === 'dark' || (t !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <style>
+      :root {
+        --bg: #fcfcfd;
+        --bg-card: #ffffff;
+        --bg-soft: #f0f2f6;
+        --text: #111318;
+        --text-2: #262b33;
+        --muted: #6b7280;
+        --accent: #1a6ee0;
+        --accent-hover: #e8862c;
+        --border: #e6e8ee;
+        --shadow: 0 8px 28px rgba(20, 30, 60, 0.07);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #101318;
+          --bg-card: #171b22;
+          --bg-soft: #1f2530;
+          --text: #edeef2;
+          --text-2: #d0d5dd;
+          --muted: #9aa3af;
+          --accent: #6aa6ff;
+          --accent-hover: #ffb454;
+          --border: #262c36;
+          --shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+        }
+      }
+
+      :root[data-theme="dark"] {
+        --bg: #101318;
+        --bg-card: #171b22;
+        --bg-soft: #1f2530;
+        --text: #edeef2;
+        --text-2: #d0d5dd;
+        --muted: #9aa3af;
+        --accent: #6aa6ff;
+        --accent-hover: #ffb454;
+        --border: #262c36;
+        --shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+        font-size: 15px;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        transition: background 0.25s ease, color 0.25s ease;
+      }
+
+      ::selection { background: var(--accent); color: #fff; }
+
+      a { color: var(--accent); text-decoration: none; transition: color 0.15s ease; }
+      a:hover { color: var(--accent-hover); }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+
+      .container {
+        max-width: 840px;
+        margin: 0 auto;
+        padding: 0 28px;
+      }
+
+      /* ---------- Floating theme toggle ---------- */
+      .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 22px;
+        z-index: 50;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        border-radius: 999px;
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 15px;
+        line-height: 1;
+        color: var(--text-2);
+        transition: border-color 0.15s ease, transform 0.15s ease;
+      }
+      .theme-toggle:hover { border-color: var(--accent); transform: scale(1.06); }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 290px;
+        gap: 52px;
+        align-items: center;
+        padding: 72px 0 20px;
+      }
+      .hero h1 {
+        margin: 0 0 6px;
+        font-size: 37px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+        text-align: center;
+      }
+      .tagline {
+        margin: 0 0 20px;
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--text-2);
+        letter-spacing: 0.01em;
+        text-align: center;
+      }
+      .nowrap { white-space: nowrap; }
+      .bio {
+        margin: 0 0 24px;
+        font-size: 15.5px;
+        color: var(--text);
+        line-height: 1.85;
+      }
+      .bio strong { color: var(--text); font-weight: 600; }
+
+      .social-links { display: flex; flex-wrap: nowrap; justify-content: flex-start; gap: 8px; }
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 11px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        font-size: 12.5px;
+        font-weight: 500;
+        color: var(--text-2);
+        white-space: nowrap;
+        transition: all 0.15s ease;
+      }
+      .social-links a:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+        background: color-mix(in srgb, var(--accent) 7%, transparent);
+      }
+      .social-links svg { display: block; flex-shrink: 0; }
+
+      /* ---------- Photo ---------- */
+      .hero-photo { text-align: center; margin-top: 26px; }
+      .pc-container {
+        position: relative;
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+      .pc-image {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      /* ---------- Sections ---------- */
+      section { margin-top: 58px; }
+      .section-title {
+        margin: 0 0 26px;
+        font-size: 13.5px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--text-2);
+      }
+      .section-text {
+        margin: 0;
+        color: var(--text);
+        font-size: 15px;
+        line-height: 1.85;
+      }
+
+      /* ---------- Entries (flat, no boxes — matches the classic layout) ---------- */
+      .entries { display: grid; gap: 42px; }
+      .entry {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 30px;
+        align-items: center;
+      }
+      .entry-logo-wrap { text-align: center; }
+      .entry-logo {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+      .entry-head h3 {
+        margin: 0;
+        font-size: 16.5px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      .entry-org { margin: 3px 0 0; font-size: 14.5px; color: var(--text-2); }
+      .entry-detail { margin: 5px 0 0; font-size: 14px; color: var(--text-2); }
+      .entry-detail strong { color: var(--text); font-weight: 600; }
+      .entry-detail a { font-weight: 500; }
+      .entry-date {
+        display: block;
+        margin-top: 10px;
+        font-size: 13.5px;
+        font-style: italic;
+        color: var(--muted);
+      }
+
+      /* ---------- Footer ---------- */
+      footer {
+        margin: 72px 0 44px;
+        text-align: center;
+      }
+      .footer-note {
+        font-size: 13px;
+        color: var(--muted);
+        margin: 0 0 26px;
+      }
+      .map-wrap { display: flex; justify-content: center; }
+
+      /* ---------- WeChat QR modal ---------- */
+      .qr-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        background: rgba(10, 12, 16, 0.55);
+        -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: zoom-out;
+      }
+      .qr-modal[hidden] { display: none; }
+      .qr-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 16px 16px 10px;
+        text-align: center;
+        box-shadow: var(--shadow);
+        width: min(300px, 84vw);
+        cursor: default;
+      }
+      .qr-card img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+      .qr-card p {
+        margin: 10px 0 6px;
+        font-size: 13px;
+        color: var(--text-2);
+      }
+
+      /* ---------- Responsive ---------- */
+      /* Very narrow screens: let pills wrap into centered rows instead of overflowing */
+      @media (max-width: 430px) {
+        .social-links { flex-wrap: wrap; }
+      }
+
+      @media (max-width: 720px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 34px;
+          padding-top: 56px;
+        }
+        .hero-photo { max-width: 250px; margin: 0 auto; order: -1; }
+        .hero h1 { font-size: 30px; }
+        .entry {
+          grid-template-columns: 84px 1fr;
+          gap: 18px;
+        }
+        .entries { gap: 34px; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .theme-toggle, a, body { transition: none; }
+      }
+    </style>
   </head>
 
-  <body>
-    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-      <tr style="padding:0px">
-        <td style="padding:0px">
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr style="padding:0px">
-              <td style="padding:2.5%;width:63%;vertical-align:middle">
-                <p class="name" style="text-align: center;">
-                  Junming Lin
-                </p>
-                <p>
-                  I am currently a senior undergraduate student at Beijing University of Posts and Telecommunications (<strong>@ BUPT</strong>), majoring in Telecommunications Engineering. I am also an incoming graduate student at the Department of Computer Science and Technology, Tsinghua University (<strong>@ THU</strong>), where I will begin my Master's degree in Artificial Intelligence in 2026. My research interests lie in the areas of Multimodal Large Language Models, Agentic and Reinforcement Learning. 
-                </p>
-                <p style="text-align:center">
-                  <a href="linjunming@bupt.edu.cn">Email</a> &nbsp;/&nbsp;
-                  <a href="https://scholar.google.com/citations?user=tky5jV0AAAAJ&hl=zh-CN">Scholar</a> &nbsp;/&nbsp;
-                  <a href="https://github.com/mjuicem/">Github</a> &nbsp;/&nbsp;
-                  <a href="https://meee.com.tw/2JMis33">WeChat</a>
-                </p>
-              </td>
-              <td style="padding:3.0%;width:37%;max-width:37%">
-                <div id="profile-carousel" class="pc-container" data-images="images/mjuicem.png">
-                  <img id="pc-image" class="pc-image hoverZoomLink" alt="profile photo" src="images/mjuicem.png" style="width:100%;max-width:100%;object-fit: cover;">
-                  <button class="pc-arrow pc-prev" aria-label="Previous photo">‹</button>
-                  <button class="pc-arrow pc-next" aria-label="Next photo">›</button>
-                </div>
-                <p style="text-align: center; font-style: italic; color: #666; margin-top: 8px; margin-bottom: 15px; font-size: 16px; font-family: 'KaiTi', '楷体', serif;">
-                  "西郊有密林，助君出重围"
-                </p>
-              </td>
-            </tr>
-          </tbody></table>
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-              <tr>
-              <td style="padding:16px;width:100%;vertical-align:middle">
-                <h2>Research</h2>
-                <p>
-                  I'm interested in MLLM, Agentic and Reinforcement Learning, especially Agentic RL now :). My research vision is to achieve robots and artificial intelligence with higher-level intelligence.
-                </p>
-              </td>
-            </tr>
-          </tbody></table>
+  <body id="top">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
 
-          <table style="width:100%; margin:0 auto; border:0; border-spacing:0; padding:16px;"><tbody>
-            <tr>
-              <td>
-                <h2>Education</h2>
-              </td>
-            </tr>
-          </tbody></table>
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            
-           
-            <tr>
-              <td align="center" style="padding:16px;width:20%;vertical-align:middle">
-                <img src='images/thu.png' width="120">
-              </td>
-              <td style="padding:8px;width:80%;vertical-align:middle">
-                <strong>Master Student</strong>
-                <br>
-                Tsinghua University, Department of Computer Science and Technology
-                <br>
-                Computer Science and Technology
-                <br>
-                <br>
-                <em>2026.09 - 2028.06 (expected)</em>
-                <br>
-              </td>
-            </tr>
-            <tr>
-              <td align="center" style="padding:16px;width:20%;vertical-align:middle">
-                <img src='images/bupt.png' width="120">
-              </td>
-              <td style="padding:8px;width:80%;vertical-align:middle">
-                <strong>Undergraduate Student</strong>
-                <br>
-                Beijing University of Posts and Telecommunications
-                <br>
-                Telecommunications Engineering
-                <br>
-                <br>
-                Rank: <strong>1st</strong> / 316
-                <br>
-                <em>2022.09 - 2026.06</em>
-              </td>
-              <tr>
-                <td colspan="2" style="height:24px;padding:0;"></td>
-              </tr>
-            </tr>
-            
-            
-						
-  
-            
-          <!-- </tbody></table>
-          <table style="width:100%; margin:0 auto; border:0; border-spacing:0; padding:16px;"><tbody>
-            <tr>
-              <td>
-                <h2>Publications</h2>
-              </td>
-            </tr>
-          </tbody></table>
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-
-            <tr onmouseout="bolt3d_stop()" onmouseover="bolt3d_start()" >
-              <td style="padding:8px;width:20%;vertical-align:middle">
-                <div class="one">
-                  <div class="two" id='bolt3d_image'><video  width=120% height=120% muted autoplay loop>
-        
-                  </video></div>
-                  <img src='images/CoV.png' width="160">
-                </div>
-                <script type="text/javascript">
-                  function bolt3d_start() {
-                    document.getElementById('bolt3d_image').style.opacity = "1";
-                  }
-        
-                  function bolt3d_stop() {
-                    document.getElementById('bolt3d_image').style.opacity = "0";
-                  }
-                  bolt3d_stop()
-                </script>
-              </td>
-              <td style="padding:8px;width:80%;vertical-align:middle">
-                <a href="https://streamingbench.github.io/">
-                  <span class="papertitle">MM-HELIX: Boosting Multimodal Long-chain Reflective Reasoning with Holistic Platform and Adaptive Hybrid Policy Optimization</span>
-                </a>
-                <br>
-                Xiangyu Zhao, <strong>Junming Lin</strong>, Tianhao Liang, Yifan Zhou, Wenhao Chai, Weiyun Wang, Yuzhe Gu, Hua Yang, Wenwei Zhang, Junchi Yan, Xue Yang, Haodong Duan, Kai Chen
-                <br>
-                <em>arxiv</em>
-                <br>
-                <a href="https://streamingbench.github.io/">project page</a>
-                /
-                <a href="https://arxiv.org/abs/2411.03628">arXiv</a>
-              </td>
-            </tr>
-
-    <tr onmouseout="bolt3d_stop()" onmouseover="bolt3d_start()" >
-      <td style="padding:8px;width:20%;vertical-align:middle">
-        <div class="one">
-          <div class="two" id='bolt3d_image'><video  width=100% height=100% muted autoplay loop>
-
-          </video></div>
-          <img src='images/StreamingBench.png' width="160">
+    <main class="container">
+      <div class="hero">
+        <div class="hero-text">
+          <h1>Junming Lin</h1>
+          <p class="bio">
+            I am a first-year Master's student in the Department of Computer Science and Technology at
+            Tsinghua University (<strong>@ THU</strong>). My research interests lie in Multimodal Agents and Agentic RL.
+          </p>
+          <div class="social-links">
+            <a href="mailto:lin-jm26@mails.tsinghua.edu.cn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              Email
+            </a>
+            <a href="https://scholar.google.com/citations?user=tky5jV0AAAAJ&hl=zh-CN">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 9 12 4 2 9l10 5 10-5z"/>
+                <path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/>
+                <path d="M22 9v5"/>
+              </svg>
+              Google Scholar
+            </a>
+            <a href="https://github.com/mjuicem/">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              </svg>
+              GitHub
+            </a>
+            <a href="images/wechat_qr.jpg" id="wechat-link">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                <line x1="7.5" y1="9.5" x2="7.51" y2="9.5"/>
+                <line x1="12" y1="9.5" x2="12.01" y2="9.5"/>
+                <line x1="16.5" y1="9.5" x2="16.51" y2="9.5"/>
+              </svg>
+              WeChat
+            </a>
+          </div>
         </div>
-        <script type="text/javascript">
-          function bolt3d_start() {
-            document.getElementById('bolt3d_image').style.opacity = "1";
-          }
 
-          function bolt3d_stop() {
-            document.getElementById('bolt3d_image').style.opacity = "0";
-          }
-          bolt3d_stop()
-        </script>
-      </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://streamingbench.github.io/">
-          <span class="papertitle">StreamingBench: Assessing the Gap for MLLMs to Achieve Streaming Video Understanding</span>
-        </a>
-        <br>
-        <strong>Junming Lin</strong>, Zheng Fang, Chi Chen, Zihao Wan, Fuwen Luo, Peng Li, Yang Liu, Maosong Sun
-        <br>
-        <em>arxiv</em>
-        <br>
-        <a href="https://streamingbench.github.io/">project page</a>
-        /
-        <a href="https://arxiv.org/abs/2411.03628">arXiv</a>
-      </td>
-    </tr> -->
+        <div class="hero-photo">
+          <div class="pc-container">
+            <img class="pc-image" alt="profile photo" src="images/image.png">
+          </div>
+        </div>
+      </div>
 
-          </tbody></table>
-          
-					<table style="width:100%; margin:0 auto; border:0; border-spacing:0; padding:16px;"><tbody>
-            <tr>
-              <td>
-                <h2>Internship Experience</h2>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="1" style="height:24px;padding:0;"></td>
-            </tr>
-          </tbody></table>
-	          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-	            
-	           
-		            <tr>
-		              <td align="center" style="padding:16px;width:20%;vertical-align:middle">
-		                <img src='images/Qwen.png' width="160">
-		              </td>
-	              <td style="padding:8px;width:80%;vertical-align:middle">
-	                <strong>Research Intern</strong>
-	                <br>
-	                Qwen Team, Alibaba Group
-	                <br>
-	                Mentor: Yuxuan Wang
-	                <br>
-	                <strong>Core Contributor of</strong> <a href="https://qwen.ai/blog?id=qwen3.8-omni-flash"><strong>Qwen3.8-Omni</strong></a>
-	                &nbsp;[<a href="https://qwen.ai/blog?id=qwen3.8-omni-flash">Blog</a>]
-	                [<a href="https://arxiv.org/pdf/2609.25611">Technical Report</a>]
-	                <br>
-	                <br>
-		                <em>Present</em>
-		              </td>
-		            </tr>
-		            <tr>
-		              <td colspan="2" style="height:24px;padding:0;"></td>
-		            </tr>
-		            <tr>
-		              <td align="center" style="padding:16px;width:20%;vertical-align:middle">
-		                <img src='images/ailab.png' width="160">
-		              </td>
-              <td style="padding:8px;width:80%;vertical-align:middle">
-                <strong>Research Intern</strong>
-                <br>
-                Shanghai AI Laboratory, LLM Center
-                <br>
-                Mentor: Dr. Haodong Duan, Dr. Zun Wang and Prof. Xue Yang
-                <br>
-                <strong>Core Contributor of</strong> <a href="https://arxiv.org/pdf/2603.25040"><strong>Intern-S1-Pro</strong></a>
+      <section id="research">
+        <h2 class="section-title">Research</h2>
+        <p class="section-text">
+          I am interested in Multimodal Large Language Models and Reinforcement Learning, especially
+          Agentic RL, which aims to train multimodal agents to percept, reason, act, and
+          self-improve in diverse environments. If you share these interests, please feel free to
+          contact me!
+        </p>
+      </section>
+
+      <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="entries">
+          <article class="entry">
+            <div class="entry-logo-wrap">
+              <img class="entry-logo" src="images/thu.png" alt="Tsinghua University">
+            </div>
+            <div class="entry-body">
+              <div class="entry-head">
+                <h3>Master's Student</h3>
+              </div>
+              <p class="entry-org">Tsinghua University, Department of Computer Science and Technology</p>
+              <p class="entry-detail">Computer Science and Technology</p>
+              <span class="entry-date">2026.09 - 2028.06 (expected)</span>
+            </div>
+          </article>
+
+          <article class="entry">
+            <div class="entry-logo-wrap">
+              <img class="entry-logo" src="images/bupt.png" alt="Beijing University of Posts and Telecommunications">
+            </div>
+            <div class="entry-body">
+              <div class="entry-head">
+                <h3>Undergraduate Student</h3>
+              </div>
+              <p class="entry-org">Beijing University of Posts and Telecommunications</p>
+              <p class="entry-detail">Telecommunications Engineering, Rank: <strong>1st / 316</strong></p>
+              <span class="entry-date">2022.09 - 2026.06</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2 class="section-title">Internship Experience</h2>
+        <div class="entries">
+          <article class="entry">
+            <div class="entry-logo-wrap">
+              <img class="entry-logo" src="images/Qwen.png" alt="Qwen Team, Alibaba Group">
+            </div>
+            <div class="entry-body">
+              <div class="entry-head">
+                <h3>Research Intern</h3>
+              </div>
+              <p class="entry-org">Qwen Team, Alibaba Group</p>
+              <p class="entry-detail">Mentor: Yuxuan Wang, Jin Xu</p>
+              <p class="entry-detail">
+                <strong>Core Contributor of</strong>
+                <a href="https://qwen.ai/blog?id=qwen3.8-omni-flash">Qwen3.8-Omni</a>
+                &nbsp;[<a href="https://qwen.ai/blog?id=qwen3.8-omni-flash">Blog</a>]
+                [<a href="https://arxiv.org/pdf/2609.25611">Technical Report</a>]
+              </p>
+              <span class="entry-date">Present</span>
+            </div>
+          </article>
+
+          <article class="entry">
+            <div class="entry-logo-wrap">
+              <img class="entry-logo" src="images/ailab.png" alt="Shanghai AI Laboratory">
+            </div>
+            <div class="entry-body">
+              <div class="entry-head">
+                <h3>Research Intern</h3>
+              </div>
+              <p class="entry-org">Shanghai AI Laboratory, LLM Center</p>
+              <p class="entry-detail">Mentor: Dr. Haodong Duan, Dr. Zun Wang and Prof. Xue Yang</p>
+              <p class="entry-detail">
+                <strong>Core Contributor of</strong>
+                <a href="https://arxiv.org/pdf/2603.25040">Intern-S1-Pro</a>
                 &nbsp;[<a href="https://arxiv.org/pdf/2603.25040">Technical Report</a>]
-                <br>
-                <br>
-                <em>2025.03 - 2026.03</em>
-              </td>
-            </tr>
-            <tr>
-              <td align="center" style="padding:16px;width:20%;vertical-align:middle">
-                <img src='images/thunlp.jpg' width="120">
-              </td>
-              <td style="padding:8px;width:80%;vertical-align:middle">
-                <strong>Research Intern</strong>
-                <br>
-                THUNLP, Multimodal Group
-                <br>
-                Mentor: Dr. Chi Chen and Dr. Shuo Wang
-                <br>
-                <br>
-                <em>2024.06 - 2025.03</em>
-                <br>
-                
-              </td>
-            </tr>
-            
-            
-						
-  
-            
-          </tbody></table>
-        </td>
-      </tr>
-    </table>
-  <script type="text/javascript">
-    (function() {
-      var container = document.getElementById('profile-carousel');
-      if (!container) return;
-      var imagesAttr = container.getAttribute('data-images') || '';
-      var images = imagesAttr.split(',').map(function(s){ return s.trim(); }).filter(Boolean);
-      if (images.length === 0) images = ['images/mjuicem.png'];
-      var index = 0;
-      var imgEl = document.getElementById('pc-image');
-      var prevBtn = container.querySelector('.pc-prev');
-      var nextBtn = container.querySelector('.pc-next');
+              </p>
+              <span class="entry-date">2025.03 - 2026.03</span>
+            </div>
+          </article>
 
-      function update() {
-        imgEl.src = images[index];
-      }
-      function prev() { index = (index - 1 + images.length) % images.length; update(); }
-      function next() { index = (index + 1) % images.length; update(); }
+          <article class="entry">
+            <div class="entry-logo-wrap">
+              <img class="entry-logo" src="images/thunlp.jpg" alt="THUNLP">
+            </div>
+            <div class="entry-body">
+              <div class="entry-head">
+                <h3>Research Intern</h3>
+              </div>
+              <p class="entry-org">THUNLP, Multimodal Group</p>
+              <p class="entry-detail">Mentor: Dr. Chi Chen and Dr. Shuo Wang</p>
+              <span class="entry-date">2024.06 - 2025.03</span>
+            </div>
+          </article>
+        </div>
+      </section>
 
-      if (prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', prev);
-        nextBtn.addEventListener('click', next);
-      }
+      <!--
+      Publications section (kept for future use, links verified)
 
-      var startX = null;
-      imgEl.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
-      imgEl.addEventListener('touchend', function(e){
-        if (startX == null) return;
-        var dx = e.changedTouches[0].clientX - startX;
-        if (Math.abs(dx) > 30) { if (dx > 0) { prev(); } else { next(); } }
-        startX = null;
-      }, {passive:true});
-    })();
-  </script>
+      <section id="publications">
+        <h2 class="section-title">Publications</h2>
+        <div class="entries">
+          <article class="entry">
+            <div class="entry-logo-wrap">
+              <img class="entry-logo" src="images/CoV.png" alt="MM-HELIX">
+            </div>
+            <div class="entry-body">
+              <div class="entry-head">
+                <h3><a href="https://arxiv.org/abs/2510.08540">MM-HELIX: Boosting Multimodal Long-chain Reflective Reasoning with Holistic Platform and Adaptive Hybrid Policy Optimization</a></h3>
+              </div>
+              <p class="entry-detail">
+                Xiangyu Zhao, <strong>Junming Lin</strong>, Tianhao Liang, Yifan Zhou, Wenhao Chai, Weiyun Wang, Yuzhe Gu, Hua Yang, Wenwei Zhang, Junchi Yan, Xue Yang, Haodong Duan, Kai Chen
+              </p>
+              <p class="entry-detail">[<a href="https://arxiv.org/abs/2510.08540">arXiv</a>]</p>
+            </div>
+          </article>
 
-  <div style="margin-top:30px; margin-bottom:30px;">
-  <script type="text/javascript" id="clustrmaps"
-    src="//clustrmaps.com/map_v2.js?d=NnBA64E737hAcVacnTsXOaQ1x_hltgLZdX-hn9mSECQ&cl=ffffff&w=300">
-  </script>
-</div>
+          <article class="entry">
+            <div class="entry-logo-wrap">
+              <img class="entry-logo" src="images/StreamingBench.png" alt="StreamingBench">
+            </div>
+            <div class="entry-body">
+              <div class="entry-head">
+                <h3><a href="https://streamingbench.github.io/">StreamingBench: Assessing the Gap for MLLMs to Achieve Streaming Video Understanding</a></h3>
+              </div>
+              <p class="entry-detail">
+                <strong>Junming Lin</strong>, Zheng Fang, Chi Chen, Zihao Wan, Fuwen Luo, Peng Li, Yang Liu, Maosong Sun
+              </p>
+              <p class="entry-detail">[<a href="https://streamingbench.github.io/">Project Page</a>] [<a href="https://arxiv.org/abs/2411.03628">arXiv</a>]</p>
+            </div>
+          </article>
+        </div>
+      </section>
+      -->
 
+      <footer>
+        <p class="footer-note"></p>
+        <div class="map-wrap">
+          <script type="text/javascript" id="clustrmaps"
+            src="//clustrmaps.com/map_v2.js?d=NnBA64E737hAcVacnTsXOaQ1x_hltgLZdX-hn9mSECQ&cl=ffffff&w=300">
+          </script>
+        </div>
+      </footer>
+    </main>
+
+    <div class="qr-modal" id="qr-modal" hidden role="dialog" aria-modal="true" aria-label="WeChat QR code">
+      <div class="qr-card">
+        <img src="images/wechat_qr.jpg" alt="WeChat QR code">
+        <p>Scan to add me on WeChat</p>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      // ----- Theme toggle -----
+      (function () {
+        var btn = document.getElementById('theme-toggle');
+        var root = document.documentElement;
+        function isDark() { return root.getAttribute('data-theme') === 'dark'; }
+        function setIcon() { btn.textContent = isDark() ? '☀️' : '🌙'; }
+        btn.addEventListener('click', function () {
+          root.setAttribute('data-theme', isDark() ? 'light' : 'dark');
+          try { localStorage.setItem('theme', isDark() ? 'dark' : 'light'); } catch (e) {}
+          setIcon();
+        });
+        setIcon();
+      })();
+
+      // ----- WeChat QR modal -----
+      (function () {
+        var modal = document.getElementById('qr-modal');
+        var trigger = document.getElementById('wechat-link');
+        if (!modal || !trigger) return;
+        function open(e) { e.preventDefault(); modal.hidden = false; }
+        function close() { modal.hidden = true; }
+        trigger.addEventListener('click', open);
+        modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+      })();
+
+    </script>
   </body>
 </html>
